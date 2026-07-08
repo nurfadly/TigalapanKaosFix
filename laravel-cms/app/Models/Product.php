@@ -36,6 +36,15 @@ class Product extends Model
         'is_active' => 'boolean',
     ];
 
+    /**
+     * Dipakai untuk route model binding di halaman publik: /produk/{product}
+     * mengambil produk lewat slug, bukan id.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -86,5 +95,16 @@ class Product extends Model
     public function getFinalPriceAttribute(): int
     {
         return $this->is_on_sale ? $this->discount_price : $this->price;
+    }
+
+    /**
+     * URL gambar utama untuk kartu produk. Fallback ke gambar pertama
+     * kalau belum ada yang ditandai utama, atau null kalau belum ada gambar sama sekali.
+     */
+    public function getPrimaryImageUrlAttribute(): ?string
+    {
+        $image = $this->images->firstWhere('is_primary', true) ?? $this->images->first();
+
+        return $image ? \Illuminate\Support\Facades\Storage::url($image->path) : null;
     }
 }

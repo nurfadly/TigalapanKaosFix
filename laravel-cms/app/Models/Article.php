@@ -24,6 +24,15 @@ class Article extends Model
         'published_at' => 'datetime',
     ];
 
+    /**
+     * Dipakai untuk route model binding di halaman publik: /artikel/{article}
+     * mengambil artikel lewat slug, bukan id.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

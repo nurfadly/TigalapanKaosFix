@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preview CMS - Tigalapankaos</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { cloud: '#EFEFEF', onyx: '#0F0F0F', silver: '#8E8E8E', gusto: '#F9A31A' },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; }
+  .page { display: none; }
+  .page.active { display: block; }
+  .navlink.active { background: #F9A31A; color: #0F0F0F; }
+  .navlink:not(.active):hover { background: rgba(255,255,255,0.1); }
+</style>
+</head>
+<body class="bg-cloud text-onyx antialiased">
+
+<div class="bg-onyx text-cloud text-xs text-center py-2 px-4">
+  Ini adalah <strong>mockup tampilan saja</strong> (HTML statis) &mdash; tombol dan form di sini tidak benar-benar menyimpan data. Untuk versi yang berfungsi penuh, jalankan project Laravel yang sudah dikirim sebelumnya.
+</div>
+
+<div class="min-h-screen flex">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 shrink-0 bg-onyx text-cloud min-h-screen p-6 hidden md:block">
+    <a href="#" class="text-xl font-black italic">tigalapankaos</a>
+    <p class="text-xs text-cloud/50 mt-1">Admin CMS (Preview)</p>
+
+    <nav class="mt-8 flex flex-col gap-1 text-sm font-semibold">
+      <button class="navlink active text-left px-3 py-2 rounded-lg" data-page="dashboard">Dashboard</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="produk">Produk</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="produk-form">+ Tambah Produk</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="artikel">Artikel</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="banner">Banner</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="pesanan">Pesanan</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="pesanan-detail">&nbsp;&nbsp;&rsaquo; Detail Pesanan</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="stok">Stok Outlet</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="stok-data">&nbsp;&nbsp;&rsaquo; Data Stok</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="stok-match">&nbsp;&nbsp;&rsaquo; Pencocokan Produk</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="leads">Leads</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="leads-detail">&nbsp;&nbsp;&rsaquo; Detail Lead</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="testimoni">Testimoni</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="cabang">Cabang</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="kategori">Kategori</button>
+      <button class="navlink text-left px-3 py-2 rounded-lg" data-page="pengguna">Pengguna</button>
+    </nav>
+
+    <div class="mt-8 text-left px-3 py-2 rounded-lg text-sm font-semibold text-cloud/40">Keluar</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-6 md:p-10">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- DASHBOARD -->
+      <section class="page active" id="page-dashboard">
+        <h1 class="text-2xl font-black mb-6">Dashboard</h1>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white p-5 rounded-xl border border-onyx/10">
+            <p class="text-xs font-bold text-onyx/50 uppercase">Total Produk</p>
+            <p class="text-3xl font-black mt-1">17</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-onyx/10">
+            <p class="text-xs font-bold text-onyx/50 uppercase">Produk Aktif</p>
+            <p class="text-3xl font-black mt-1">15</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-onyx/10">
+            <p class="text-xs font-bold text-onyx/50 uppercase">Sedang Diskon</p>
+            <p class="text-3xl font-black mt-1 text-gusto">4</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-onyx/10">
+            <p class="text-xs font-bold text-onyx/50 uppercase">Artikel Terbit</p>
+            <p class="text-3xl font-black mt-1">7 / 8</p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <div class="bg-white p-5 rounded-xl border border-onyx/10">
+            <div class="flex items-center justify-between mb-4">
+              <p class="font-bold">Produk Terbaru</p>
+              <a href="#" class="text-sm text-gusto font-semibold">Lihat semua</a>
+            </div>
+            <ul class="divide-y divide-onyx/10 text-sm">
+              <li class="py-2 flex items-center justify-between"><span>Kaos Combed 30s Premium</span><span class="text-onyx/50">Rp45.000</span></li>
+              <li class="py-2 flex items-center justify-between"><span>Kaos Combed 24s Reguler</span><span class="text-onyx/50">Rp38.000</span></li>
+              <li class="py-2 flex items-center justify-between"><span>Polo Pique Combed</span><span class="text-onyx/50">Rp65.000</span></li>
+            </ul>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-onyx/10">
+            <div class="flex items-center justify-between mb-4">
+              <p class="font-bold">Artikel Terbaru</p>
+              <a href="#" class="text-sm text-gusto font-semibold">Lihat semua</a>
+            </div>
+            <ul class="divide-y divide-onyx/10 text-sm">
+              <li class="py-2 flex items-center justify-between"><span>Cara Memilih Bahan Cotton Combed</span><span class="text-onyx/50">Terbit</span></li>
+              <li class="py-2 flex items-center justify-between"><span>5 Warna Kaos Polos Paling Laris</span><span class="text-onyx/50">Terbit</span></li>
+              <li class="py-2 flex items-center justify-between"><span>Panduan Ukuran Kaos</span><span class="text-onyx/50">Draft</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUK LIST -->
+      <section class="page" id="page-produk">
+        <h1 class="text-2xl font-black mb-6">Produk</h1>
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div class="flex items-center gap-2">
+            <input type="text" placeholder="Cari produk..." class="border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+            <select class="border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Semua Kategori</option><option>Pria</option><option>Wanita</option><option>Anak</option><option>Polo</option></select>
+            <button class="border border-onyx/20 rounded-lg px-4 py-2 text-sm font-semibold">Filter</button>
+          </div>
+          <button class="navlink bg-onyx text-cloud font-bold text-sm px-5 py-2.5 rounded-full" data-page="produk-form">+ Produk Baru</button>
+        </div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr>
+              <th class="px-4 py-3 font-bold">Produk</th><th class="px-4 py-3 font-bold">Kategori</th><th class="px-4 py-3 font-bold">Harga</th><th class="px-4 py-3 font-bold">Status</th><th class="px-4 py-3 font-bold text-right">Aksi</th>
+            </tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr>
+                <td class="px-4 py-3 flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-onyx/10 shrink-0"></div><span class="font-semibold">Kaos Combed 30s Premium</span></td>
+                <td class="px-4 py-3 text-onyx/60">Pria</td>
+                <td class="px-4 py-3"><span class="font-bold text-gusto">Rp45.000</span> <span class="text-onyx/40 line-through text-xs">Rp50.000</span></td>
+                <td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Aktif</span></td>
+                <td class="px-4 py-3 text-right"><button class="navlink text-sm font-semibold text-onyx/70" data-page="produk-form">Ubah</button> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-onyx/10 shrink-0"></div><span class="font-semibold">Kaos Combed 24s Reguler</span></td>
+                <td class="px-4 py-3 text-onyx/60">Pria</td>
+                <td class="px-4 py-3"><span class="font-semibold">Rp38.000</span></td>
+                <td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Aktif</span></td>
+                <td class="px-4 py-3 text-right"><button class="navlink text-sm font-semibold text-onyx/70" data-page="produk-form">Ubah</button> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-onyx/10 shrink-0"></div><span class="font-semibold">Kaos Anak Combed 20s</span></td>
+                <td class="px-4 py-3 text-onyx/60">Anak</td>
+                <td class="px-4 py-3"><span class="font-bold text-gusto">Rp32.000</span> <span class="text-onyx/40 line-through text-xs">Rp36.000</span></td>
+                <td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/50">Nonaktif</span></td>
+                <td class="px-4 py-3 text-right"><button class="navlink text-sm font-semibold text-onyx/70" data-page="produk-form">Ubah</button> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PRODUK FORM -->
+      <section class="page" id="page-produk-form">
+        <h1 class="text-2xl font-black mb-6">Produk Baru</h1>
+        <div class="bg-white p-6 rounded-xl border border-onyx/10">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div><label class="text-sm font-bold">Nama Produk</label><input type="text" value="Kaos Combed 30s Premium" class="mt-1 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm"></div>
+            <div><label class="text-sm font-bold">Kategori</label><select class="mt-1 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Pria</option><option>Wanita</option><option>Anak</option><option>Polo</option></select></div>
+          </div>
+          <div class="mt-4"><label class="text-sm font-bold">Deskripsi</label><textarea rows="3" class="mt-1 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm">Kaos polos berbahan cotton combed 30s, lembut, adem, cocok untuk sablon.</textarea></div>
+          <div class="mt-6 grid md:grid-cols-3 gap-6">
+            <div><label class="text-sm font-bold">Harga Normal (Rp)</label><input type="number" value="50000" class="mt-1 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm"></div>
+            <div><label class="text-sm font-bold">Harga Diskon (Rp)</label><input type="number" value="45000" class="mt-1 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm"></div>
+            <div class="flex items-end pb-2"><label class="text-sm font-bold flex items-center gap-2"><input type="checkbox" checked> Tampilkan di website</label></div>
+          </div>
+          <div class="mt-8 pt-6 border-t border-onyx/10">
+            <label class="text-sm font-bold">Warna Tersedia</label>
+            <div class="flex items-center gap-3 mb-2 mt-2">
+              <span class="w-9 h-9 rounded-full bg-black inline-block"></span><input type="text" value="Hitam" class="flex-1 border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+            </div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-9 h-9 rounded-full bg-white border inline-block"></span><input type="text" value="Putih" class="flex-1 border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+            </div>
+            <button class="mt-1 text-sm font-semibold text-gusto">+ Tambah Warna</button>
+          </div>
+          <div class="mt-8 pt-6 border-t border-onyx/10">
+            <label class="text-sm font-bold">Ukuran Tersedia</label>
+            <div class="flex flex-wrap gap-3 mt-2">
+              <label class="flex items-center gap-2 border border-onyx/20 rounded-full px-4 py-2 text-sm font-semibold"><input type="checkbox" checked>S</label>
+              <label class="flex items-center gap-2 border border-onyx/20 rounded-full px-4 py-2 text-sm font-semibold"><input type="checkbox" checked>M</label>
+              <label class="flex items-center gap-2 border border-onyx/20 rounded-full px-4 py-2 text-sm font-semibold"><input type="checkbox">L</label>
+              <label class="flex items-center gap-2 border border-onyx/20 rounded-full px-4 py-2 text-sm font-semibold"><input type="checkbox">XL</label>
+              <label class="flex items-center gap-2 border border-onyx/20 rounded-full px-4 py-2 text-sm font-semibold"><input type="checkbox">2XL</label>
+            </div>
+          </div>
+          <div class="mt-8 pt-6 border-t border-onyx/10">
+            <label class="text-sm font-bold">Gambar Produk</label>
+            <div class="grid grid-cols-4 gap-3 my-3">
+              <div class="aspect-square bg-onyx/10 rounded-lg"></div>
+              <div class="aspect-square bg-onyx/10 rounded-lg"></div>
+            </div>
+            <input type="file" class="w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+          </div>
+          <button class="mt-8 bg-onyx text-cloud font-bold px-6 py-2.5 rounded-full">Simpan Produk</button>
+        </div>
+      </section>
+
+      <!-- ARTIKEL -->
+      <section class="page" id="page-artikel">
+        <h1 class="text-2xl font-black mb-6">Artikel</h1>
+        <div class="flex justify-end mb-4"><button class="bg-onyx text-cloud font-bold text-sm px-5 py-2.5 rounded-full">+ Artikel Baru</button></div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Judul</th><th class="px-4 py-3 font-bold">Kategori</th><th class="px-4 py-3 font-bold">Status</th><th class="px-4 py-3 font-bold text-right">Aksi</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-semibold">Cara Memilih Bahan Cotton Combed yang Tepat</td><td class="px-4 py-3 text-onyx/60">Bahan</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Terbit</span></td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+              <tr><td class="px-4 py-3 font-semibold">Panduan Ukuran Kaos agar Tidak Salah Pilih Size</td><td class="px-4 py-3 text-onyx/60">Bisnis</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/50">Draft</span></td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BANNER -->
+      <section class="page" id="page-banner">
+        <h1 class="text-2xl font-black mb-6">Banner / Hero Slider</h1>
+        <div class="flex justify-between items-center mb-4">
+          <p class="text-sm text-onyx/60">Slide ditampilkan berurutan sesuai "Urutan", dari kecil ke besar.</p>
+          <button class="bg-onyx text-cloud font-bold text-sm px-5 py-2.5 rounded-full">+ Banner Baru</button>
+        </div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Urutan</th><th class="px-4 py-3 font-bold">Preview</th><th class="px-4 py-3 font-bold">Judul</th><th class="px-4 py-3 font-bold">Status</th><th class="px-4 py-3 font-bold text-right">Aksi</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">1</td><td class="px-4 py-3"><div class="w-20 h-12 rounded-lg bg-onyx/10"></div></td><td class="px-4 py-3 font-semibold">Supplier Kaos Polos Terlengkap Sejak 2018</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Aktif</span></td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">2</td><td class="px-4 py-3"><div class="w-20 h-12 rounded-lg bg-onyx/10"></div></td><td class="px-4 py-3 font-semibold">Lebih dari 20 Warna Cotton Combed</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Aktif</span></td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PESANAN -->
+      <section class="page" id="page-pesanan">
+        <h1 class="text-2xl font-black mb-6">Pesanan</h1>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <input type="text" placeholder="Cari nama / nomor telepon..." class="border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+          <select class="border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Semua Status</option><option>Baru</option><option>Diproses</option><option>Selesai</option><option>Dibatalkan</option></select>
+          <button class="border border-onyx/20 rounded-lg px-4 py-2 text-sm font-semibold">Filter</button>
+        </div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Pemesan</th><th class="px-4 py-3 font-bold">Item</th><th class="px-4 py-3 font-bold">Total</th><th class="px-4 py-3 font-bold">Status</th><th class="px-4 py-3 font-bold">Waktu</th><th class="px-4 py-3 font-bold text-right">Aksi</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3"><p class="font-semibold">Andi Prasetyo</p><p class="text-onyx/50 text-xs">0812xxxxxxx</p></td><td class="px-4 py-3 text-onyx/60">3 barang</td><td class="px-4 py-3 font-semibold">Rp215.000</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-gusto/20 text-gusto">Baru</span></td><td class="px-4 py-3 text-onyx/50 text-xs">08 Jul 2026, 14:20</td><td class="px-4 py-3 text-right"><button class="navlink text-sm font-semibold text-onyx/70" data-page="pesanan-detail">Detail</button></td></tr>
+              <tr><td class="px-4 py-3"><p class="font-semibold">Siti Rahma</p><p class="text-onyx/50 text-xs">0813xxxxxxx</p></td><td class="px-4 py-3 text-onyx/60">1 barang</td><td class="px-4 py-3 font-semibold">Rp45.000</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Selesai</span></td><td class="px-4 py-3 text-onyx/50 text-xs">07 Jul 2026, 09:05</td><td class="px-4 py-3 text-right"><button class="navlink text-sm font-semibold text-onyx/70" data-page="pesanan-detail">Detail</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PESANAN DETAIL -->
+      <section class="page" id="page-pesanan-detail">
+        <h1 class="text-2xl font-black mb-6">Detail Pesanan #1042</h1>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="md:col-span-2 bg-white rounded-xl border border-onyx/10 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Produk</th><th class="px-4 py-3 font-bold">Varian</th><th class="px-4 py-3 font-bold">Harga</th><th class="px-4 py-3 font-bold">Qty</th><th class="px-4 py-3 font-bold text-right">Subtotal</th></tr></thead>
+              <tbody class="divide-y divide-onyx/10">
+                <tr><td class="px-4 py-3 font-semibold">Kaos Combed 30s Premium</td><td class="px-4 py-3 text-onyx/60">Hitam, M</td><td class="px-4 py-3 text-onyx/60">Rp45.000</td><td class="px-4 py-3 text-onyx/60">2</td><td class="px-4 py-3 text-right font-semibold">Rp90.000</td></tr>
+                <tr><td class="px-4 py-3 font-semibold">Polo Pique Combed</td><td class="px-4 py-3 text-onyx/60">Navy, L</td><td class="px-4 py-3 text-onyx/60">Rp65.000</td><td class="px-4 py-3 text-onyx/60">1</td><td class="px-4 py-3 text-right font-semibold">Rp65.000</td></tr>
+              </tbody>
+              <tfoot><tr class="border-t border-onyx/10"><td colspan="4" class="px-4 py-3 font-bold text-right">Total</td><td class="px-4 py-3 font-black text-right">Rp215.000</td></tr></tfoot>
+            </table>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl border border-onyx/10 p-5">
+              <p class="text-xs font-bold uppercase text-onyx/50">Pemesan</p>
+              <p class="mt-2 font-bold">Andi Prasetyo</p>
+              <p class="text-sm text-onyx/60">0812xxxxxxx</p>
+              <p class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-gusto"><i class="ph-bold ph-whatsapp-logo"></i> Chat WhatsApp</p>
+            </div>
+            <div class="bg-white rounded-xl border border-onyx/10 p-5">
+              <label class="text-sm font-bold">Status Pesanan</label>
+              <select class="mt-2 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Baru</option><option>Diproses</option><option>Selesai</option><option>Dibatalkan</option></select>
+              <button class="mt-4 w-full bg-onyx text-cloud font-bold px-5 py-2.5 rounded-full">Simpan</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STOK -->
+      <section class="page" id="page-stok">
+        <h1 class="text-2xl font-black mb-6">Stok Outlet</h1>
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+          <div class="md:col-span-2 bg-white rounded-xl border border-onyx/10 p-6">
+            <p class="font-bold">Upload File Stok</p>
+            <p class="text-xs text-onyx/50 mt-1">Format .csv atau .xlsx hasil export dari sistem kasir/POS.</p>
+            <input type="file" class="mt-4 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+            <button class="mt-4 bg-onyx text-cloud font-bold px-6 py-2.5 rounded-full">Proses Upload</button>
+          </div>
+          <div class="bg-white rounded-xl border border-onyx/10 p-6">
+            <p class="font-bold">Data Saat Ini</p>
+            <p class="mt-2 text-sm text-onyx/60">3.482 item unik</p>
+            <p class="text-sm text-onyx/60">16 outlet</p>
+            <p class="text-sm text-onyx/60">210 sudah tertaut produk</p>
+            <button class="navlink mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gusto" data-page="stok-data">Lihat Data Stok &rarr;</button><br>
+            <button class="navlink mt-2 inline-flex items-center gap-2 text-sm font-semibold text-gusto" data-page="stok-match">Pencocokan Produk &rarr;</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">File</th><th class="px-4 py-3 font-bold">Baris</th><th class="px-4 py-3 font-bold">Outlet</th><th class="px-4 py-3 font-bold">Waktu</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-semibold">Inventory Summary - 06-07-2026 - All Outlet.csv</td><td class="px-4 py-3 text-onyx/60">84.391</td><td class="px-4 py-3 text-onyx/60">16</td><td class="px-4 py-3 text-onyx/50 text-xs">06 Jul 2026, 20:11</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- STOK DATA -->
+      <section class="page" id="page-stok-data">
+        <h1 class="text-2xl font-black mb-6">Data Stok Outlet</h1>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <input type="text" placeholder="Cari nama item..." class="border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+          <select class="border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Semua Outlet</option><option>DC TIGALAPAN</option><option>MAMU MAKASSAR</option></select>
+          <select class="border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Semua Kategori</option><option>COMBED 30S</option><option>KIDS</option></select>
+          <button class="border border-onyx/20 rounded-lg px-4 py-2 text-sm font-semibold">Filter</button>
+        </div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Nama Item</th><th class="px-4 py-3 font-bold">Kategori</th><th class="px-4 py-3 font-bold">Outlet</th><th class="px-4 py-3 font-bold">Produk Tertaut</th><th class="px-4 py-3 font-bold text-right">Stok Akhir</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-semibold">ABU MISTY 30S PDK M</td><td class="px-4 py-3 text-onyx/60">COMBED 30S</td><td class="px-4 py-3 text-onyx/60">DC TIGALAPAN</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/50">Belum tertaut</span></td><td class="px-4 py-3 text-right font-semibold">60</td></tr>
+              <tr><td class="px-4 py-3 font-semibold">ABU MISTY 30S PJG L</td><td class="px-4 py-3 text-onyx/60">COMBED 30S</td><td class="px-4 py-3 text-onyx/60">DC TIGALAPAN</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Kaos Combed 30s Premium</span></td><td class="px-4 py-3 text-right font-semibold">156</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- STOK MATCH -->
+      <section class="page" id="page-stok-match">
+        <h1 class="text-2xl font-black mb-6">Pencocokan Stok ke Produk</h1>
+        <p class="text-sm text-onyx/60 mb-4">Sistem mencoba mencocokkan otomatis nama item POS ke Produk katalog. Cek dan perbaiki manual kalau perlu.</p>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <input type="text" placeholder="Cari nama item..." class="border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+          <select class="border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Belum Tertaut</option><option>Sudah Tertaut</option><option>Semua</option></select>
+          <button class="border border-onyx/20 rounded-lg px-4 py-2 text-sm font-semibold">Filter</button>
+        </div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Nama Item (POS)</th><th class="px-4 py-3 font-bold">Skor</th><th class="px-4 py-3 font-bold">Produk Tertaut</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-semibold">ABU MISTY 30S PDK M</td><td class="px-4 py-3 text-onyx/60">38%</td><td class="px-4 py-3"><div class="flex items-center gap-2"><select class="border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>- Tidak tertaut -</option><option selected>Kaos Combed 30s Premium</option></select><span class="text-sm font-semibold text-gusto">Simpan</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- LEADS -->
+      <section class="page" id="page-leads">
+        <h1 class="text-2xl font-black mb-6">Leads</h1>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <input type="text" placeholder="Cari nama / telepon / email..." class="border border-onyx/20 rounded-lg px-3 py-2 text-sm">
+          <select class="border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Semua Status</option><option>Baru</option><option>Sudah Dihubungi</option><option>Selesai</option></select>
+          <button class="border border-onyx/20 rounded-lg px-4 py-2 text-sm font-semibold">Filter</button>
+        </div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Nama</th><th class="px-4 py-3 font-bold">Kontak</th><th class="px-4 py-3 font-bold">Topik</th><th class="px-4 py-3 font-bold">Status</th><th class="px-4 py-3 font-bold">Waktu</th><th class="px-4 py-3 font-bold text-right">Aksi</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-semibold">Budi Santoso</td><td class="px-4 py-3 text-onyx/60"><p>0812xxxxxxx</p><p class="text-xs text-onyx/40">budi@email.com</p></td><td class="px-4 py-3 text-onyx/60">Harga Grosir</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-gusto/20 text-gusto">Baru</span></td><td class="px-4 py-3 text-onyx/50 text-xs">08 Jul 2026, 11:02</td><td class="px-4 py-3 text-right"><button class="navlink text-sm font-semibold text-onyx/70" data-page="leads-detail">Detail</button></td></tr>
+              <tr><td class="px-4 py-3 font-semibold">Maya Kusuma</td><td class="px-4 py-3 text-onyx/60"><p>0813xxxxxxx</p></td><td class="px-4 py-3 text-onyx/60">Kerja Sama Mitra</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Selesai</span></td><td class="px-4 py-3 text-onyx/50 text-xs">05 Jul 2026, 16:40</td><td class="px-4 py-3 text-right"><button class="navlink text-sm font-semibold text-onyx/70" data-page="leads-detail">Detail</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- LEADS DETAIL -->
+      <section class="page" id="page-leads-detail">
+        <h1 class="text-2xl font-black mb-6">Detail Lead</h1>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="md:col-span-2 bg-white rounded-xl border border-onyx/10 p-6">
+            <p class="text-xs font-bold uppercase text-onyx/50">Topik</p>
+            <p class="mt-1 font-bold">Harga Grosir</p>
+            <p class="mt-4 text-xs font-bold uppercase text-onyx/50">Pesan</p>
+            <p class="mt-1 text-sm text-onyx/70 leading-relaxed">Halo, saya mau tanya harga grosir untuk pemesanan 200 pcs kaos combed 30s campur warna. Ada minimal order dan diskon khusus reseller?</p>
+            <p class="mt-4 text-xs text-onyx/40">Dikirim 08 Juli 2026, 11:02</p>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl border border-onyx/10 p-5">
+              <p class="text-xs font-bold uppercase text-onyx/50">Kontak</p>
+              <p class="mt-2 font-bold">Budi Santoso</p>
+              <p class="text-sm text-onyx/60">0812xxxxxxx</p>
+              <p class="text-sm text-onyx/60">budi@email.com</p>
+              <p class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-gusto"><i class="ph-bold ph-whatsapp-logo"></i> Chat WhatsApp</p>
+            </div>
+            <div class="bg-white rounded-xl border border-onyx/10 p-5">
+              <label class="text-sm font-bold">Status</label>
+              <select class="mt-2 w-full border border-onyx/20 rounded-lg px-3 py-2 text-sm"><option>Baru</option><option>Sudah Dihubungi</option><option>Selesai</option></select>
+              <button class="mt-4 w-full bg-onyx text-cloud font-bold px-5 py-2.5 rounded-full">Simpan</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONI -->
+      <section class="page" id="page-testimoni">
+        <h1 class="text-2xl font-black mb-6">Testimoni</h1>
+        <div class="flex justify-end mb-4"><button class="bg-onyx text-cloud font-bold text-sm px-5 py-2.5 rounded-full">+ Testimoni Baru</button></div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Urutan</th><th class="px-4 py-3 font-bold">Kutipan</th><th class="px-4 py-3 font-bold">Nama</th><th class="px-4 py-3 font-bold">Status</th><th class="px-4 py-3 font-bold text-right">Aksi</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">1</td><td class="px-4 py-3 text-onyx/70 max-w-md truncate">Kualitas kaosnya konsisten dari pesanan pertama sampai sekarang...</td><td class="px-4 py-3"><p class="font-semibold">Andi Prasetyo</p><p class="text-xs text-onyx/50">Pemilik Konveksi Anugerah Jaya, Makassar</p></td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-green-100 text-green-700">Aktif</span></td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">2</td><td class="px-4 py-3 text-onyx/70 max-w-md truncate">Respon admin cepat, kualitas sablon di atas kaos ini juga rapi...</td><td class="px-4 py-3"><p class="font-semibold">Maya Kusuma</p><p class="text-xs text-onyx/50">Owner Distro Kecil Kita, Samarinda</p></td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/50">Nonaktif</span></td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- CABANG -->
+      <section class="page" id="page-cabang">
+        <h1 class="text-2xl font-black mb-6">Cabang</h1>
+        <div class="flex justify-end mb-4"><button class="bg-onyx text-cloud font-bold text-sm px-5 py-2.5 rounded-full">+ Cabang Baru</button></div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Urutan</th><th class="px-4 py-3 font-bold">Label</th><th class="px-4 py-3 font-bold">Kota</th><th class="px-4 py-3 font-bold">Provinsi</th><th class="px-4 py-3 font-bold text-right">Aksi</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">1</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-gusto/20 text-gusto">Kantor Pusat</span></td><td class="px-4 py-3 font-semibold">Makassar</td><td class="px-4 py-3 text-onyx/60">Sulawesi Selatan</td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">2</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/70">Cabang</span></td><td class="px-4 py-3 font-semibold">Samarinda</td><td class="px-4 py-3 text-onyx/60">Kalimantan Timur</td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">3</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/70">Cabang</span></td><td class="px-4 py-3 font-semibold">Kendari</td><td class="px-4 py-3 text-onyx/60">Sulawesi Tenggara</td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+              <tr><td class="px-4 py-3 font-bold text-onyx/50">4</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/70">Cabang</span></td><td class="px-4 py-3 font-semibold">Manado</td><td class="px-4 py-3 text-onyx/60">Sulawesi Utara</td><td class="px-4 py-3 text-right"><span class="text-sm font-semibold text-onyx/70">Ubah</span> <span class="ml-3 text-sm font-semibold text-red-600">Hapus</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- KATEGORI -->
+      <section class="page" id="page-kategori">
+        <h1 class="text-2xl font-black mb-6">Kategori</h1>
+        <div class="flex justify-end mb-4"><button class="bg-onyx text-cloud font-bold text-sm px-5 py-2.5 rounded-full">+ Kategori Baru</button></div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Nama</th><th class="px-4 py-3 font-bold">Tipe</th><th class="px-4 py-3 font-bold">Jumlah Item</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-semibold">Pria</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-gusto/20 text-gusto">Produk</span></td><td class="px-4 py-3 text-onyx/60">8</td></tr>
+              <tr><td class="px-4 py-3 font-semibold">Bahan</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/70">Artikel</span></td><td class="px-4 py-3 text-onyx/60">3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PENGGUNA -->
+      <section class="page" id="page-pengguna">
+        <h1 class="text-2xl font-black mb-6">Pengguna Admin</h1>
+        <div class="flex justify-end mb-4"><button class="bg-onyx text-cloud font-bold text-sm px-5 py-2.5 rounded-full">+ Akun Baru</button></div>
+        <div class="bg-white rounded-xl border border-onyx/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-onyx/5 text-left"><tr><th class="px-4 py-3 font-bold">Nama</th><th class="px-4 py-3 font-bold">Email</th><th class="px-4 py-3 font-bold">Role</th></tr></thead>
+            <tbody class="divide-y divide-onyx/10">
+              <tr><td class="px-4 py-3 font-semibold">Admin Tigalapankaos</td><td class="px-4 py-3 text-onyx/60">admin@tigalapankaos.co.id</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-gusto/20 text-gusto">Admin</span></td></tr>
+              <tr><td class="px-4 py-3 font-semibold">Rina Marketing</td><td class="px-4 py-3 text-onyx/60">rina@tigalapankaos.co.id</td><td class="px-4 py-3"><span class="text-xs font-bold uppercase px-2 py-1 rounded-full bg-onyx/10 text-onyx/70">Editor</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  const navlinks = document.querySelectorAll('.navlink');
+  const pages = document.querySelectorAll('.page');
+  function showPage(name) {
+    pages.forEach(p => p.classList.toggle('active', p.id === 'page-' + name));
+    navlinks.forEach(l => l.classList.toggle('active', l.dataset.page === name));
+    window.scrollTo(0, 0);
+  }
+  navlinks.forEach(link => link.addEventListener('click', () => showPage(link.dataset.page)));
+</script>
+
+</body>
+</html>

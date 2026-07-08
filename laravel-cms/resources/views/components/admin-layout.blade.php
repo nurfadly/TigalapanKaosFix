@@ -24,7 +24,16 @@
             <a href="{{ route('dashboard') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('dashboard') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Dashboard</a>
             <a href="{{ route('products.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('products.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Produk</a>
             <a href="{{ route('articles.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('articles.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Artikel</a>
-            <a href="{{ route('categories.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('categories.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Kategori</a>
+            <a href="{{ route('banners.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('banners.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Banner</a>
+            <a href="{{ route('orders.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('orders.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Pesanan</a>
+            <a href="{{ route('stock.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('stock.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Stok Outlet</a>
+            <a href="{{ route('leads.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('leads.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Leads</a>
+            <a href="{{ route('testimonials.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('testimonials.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Testimoni</a>
+            <a href="{{ route('branches.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('branches.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Cabang</a>
+            @if (auth()->user()?->isAdmin())
+                <a href="{{ route('categories.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('categories.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Kategori</a>
+                <a href="{{ route('users.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('users.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Pengguna</a>
+            @endif
         </nav>
 
         <form method="POST" action="{{ route('logout') }}" class="mt-8">
