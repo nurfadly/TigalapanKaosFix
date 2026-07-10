@@ -33,6 +33,7 @@
             @if (auth()->user()?->isAdmin())
                 <a href="{{ route('categories.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('categories.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Kategori</a>
                 <a href="{{ route('users.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('users.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Pengguna</a>
+                <a href="{{ route('settings.edit') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('settings.*') ? 'bg-gusto text-onyx' : 'hover:bg-white/10' }}">Pengaturan</a>
             @endif
         </nav>
 

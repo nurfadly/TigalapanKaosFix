@@ -103,7 +103,7 @@
           <button id="addToCartDetail" type="button" class="inline-flex items-center gap-2 bg-onyx text-cloud font-bold px-7 py-3.5 rounded-full hover:bg-gusto hover:text-onyx active:scale-[0.98] transition-all">
             <i class="ph-bold ph-shopping-bag"></i> Tambah ke Keranjang
           </button>
-          <a id="orderLink" href="https://wa.me/6280000000000?text=Halo%2C%20saya%20mau%20pesan%20{{ urlencode($product->name) }}" target="_blank" rel="noopener"
+          <a id="orderLink" href="{{ $settings->whatsapp_link }}?text=Halo%2C%20saya%20mau%20pesan%20{{ urlencode($product->name) }}" target="_blank" rel="noopener"
              class="inline-flex items-center gap-2 border-2 border-onyx font-bold px-7 py-3.5 rounded-full hover:bg-onyx hover:text-cloud active:scale-[0.98] transition-all">
             Pesan Langsung
           </a>
@@ -219,7 +219,7 @@
     if (currentColor) parts.push('warna ' + currentColor);
     if (currentSize) parts.push('ukuran ' + currentSize);
     parts.push('sebanyak ' + currentQty);
-    orderLink.href = `https://wa.me/6280000000000?text=${encodeURIComponent(parts.join(' '))}`;
+    orderLink.href = `{{ $settings->whatsapp_link }}?text=${encodeURIComponent(parts.join(' '))}`;
   }
 
   swatches.forEach(s => s.addEventListener('click', () => {

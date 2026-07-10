@@ -14,7 +14,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="order-endpoint" content="{{ route('site.order.store') }}">
-<title>{{ $title ?? 'Tigalapankaos' }}</title>
+<meta name="wa-number" content="{{ $settings->whatsapp_number }}">
+<title>{{ $title ?? ($settings->site_name.' - Supplier Kaos Polos Terlengkap') }}</title>
 <meta name="description" content="{{ $description ?? 'Tigalapankaos, supplier kaos polos cotton combed terlengkap dan terpercaya sejak 2018.' }}" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,8 +51,8 @@
 <!-- NAV -->
 <header class="fixed top-0 inset-x-0 z-50 bg-cloud/90 backdrop-blur border-b border-onyx/10">
   <div class="max-w-[1400px] mx-auto px-5 md:px-8 h-16 md:h-[72px] flex items-center justify-between">
-    <a href="{{ route('home') }}" class="shrink-0" aria-label="Tigalapankaos beranda">
-      <span class="text-2xl md:text-[28px] font-black italic tracking-tight">tigalapankaos</span>
+    <a href="{{ route('home') }}" class="shrink-0" aria-label="{{ $settings->site_name }} beranda">
+      <span class="text-2xl md:text-[28px] font-black italic tracking-tight">{{ $settings->site_name }}</span>
     </a>
     <nav class="hidden lg:flex items-center gap-9 text-sm font-semibold">
       @foreach ($navLinks as $link)
@@ -59,7 +60,7 @@
       @endforeach
     </nav>
     <div class="flex items-center gap-3">
-      <a href="https://wa.me/6280000000000" target="_blank" rel="noopener"
+      <a href="{{ $settings->whatsapp_link }}" target="_blank" rel="noopener"
          class="hidden sm:inline-flex items-center gap-2 bg-onyx text-cloud text-sm font-bold px-5 py-2.5 rounded-full hover:bg-gusto hover:text-onyx active:scale-[0.98] transition-all">
         <i class="ph-bold ph-whatsapp-logo text-base"></i> Hubungi Kami
       </a>
@@ -77,7 +78,7 @@
       @foreach ($navLinks as $link)
         <a href="{{ route($link['route']) }}">{{ $link['label'] }}</a>
       @endforeach
-      <a href="https://wa.me/6280000000000" class="inline-flex items-center gap-2 bg-onyx text-cloud font-bold px-5 py-2.5 rounded-full w-fit">
+      <a href="{{ $settings->whatsapp_link }}" class="inline-flex items-center gap-2 bg-onyx text-cloud font-bold px-5 py-2.5 rounded-full w-fit">
         <i class="ph-bold ph-whatsapp-logo"></i> Hubungi Kami
       </a>
       <button class="cart-open-btn inline-flex items-center gap-2 border border-onyx/20 font-bold px-5 py-2.5 rounded-full w-fit">
@@ -94,12 +95,16 @@
 <footer class="pt-16 pb-8 border-t border-onyx/10">
   <div class="max-w-[1400px] mx-auto px-5 md:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <span class="text-2xl font-black italic-safe">tigalapankaos</span>
-      <p class="mt-3 text-sm text-onyx/60 max-w-[30ch]">Supplier kaos polos cotton combed untuk mitra usaha, konveksi, dan komunitas sejak 2018.</p>
+      <span class="text-2xl font-black italic-safe">{{ $settings->site_name }}</span>
+      <p class="mt-3 text-sm text-onyx/60 max-w-[30ch]">{{ $settings->footer_description }}</p>
       <div class="mt-4 flex items-center gap-3 text-lg">
-        <a href="#" aria-label="Instagram Tigalapankaos" class="hover:text-gusto transition-colors"><i class="ph-bold ph-instagram-logo"></i></a>
-        <a href="#" aria-label="TikTok Tigalapankaos" class="hover:text-gusto transition-colors"><i class="ph-bold ph-tiktok-logo"></i></a>
-        <a href="https://wa.me/6280000000000" aria-label="WhatsApp Tigalapankaos" class="hover:text-gusto transition-colors"><i class="ph-bold ph-whatsapp-logo"></i></a>
+        @if ($settings->instagram_url)
+          <a href="{{ $settings->instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram {{ $settings->site_name }}" class="hover:text-gusto transition-colors"><i class="ph-bold ph-instagram-logo"></i></a>
+        @endif
+        @if ($settings->tiktok_url)
+          <a href="{{ $settings->tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok {{ $settings->site_name }}" class="hover:text-gusto transition-colors"><i class="ph-bold ph-tiktok-logo"></i></a>
+        @endif
+        <a href="{{ $settings->whatsapp_link }}" target="_blank" rel="noopener" aria-label="WhatsApp {{ $settings->site_name }}" class="hover:text-gusto transition-colors"><i class="ph-bold ph-whatsapp-logo"></i></a>
       </div>
     </div>
     <div>
@@ -122,19 +127,23 @@
     <div>
       <p class="font-bold text-sm">Kontak</p>
       <div class="mt-4 flex flex-col gap-3 text-sm text-onyx/60">
-        <a href="https://wa.me/6280000000000" class="hover:text-onyx transition-colors">WhatsApp Admin</a>
-        <a href="mailto:halo@tigalapankaos.co.id" class="hover:text-onyx transition-colors">halo@tigalapankaos.co.id</a>
-        <p>Makassar, Sulawesi Selatan</p>
+        <a href="{{ $settings->whatsapp_link }}" class="hover:text-onyx transition-colors">WhatsApp Admin</a>
+        @if ($settings->contact_email)
+          <a href="mailto:{{ $settings->contact_email }}" class="hover:text-onyx transition-colors">{{ $settings->contact_email }}</a>
+        @endif
+        @if ($settings->address_city)
+          <p>{{ $settings->address_city }}{{ $settings->address_province ? ', '.$settings->address_province : '' }}</p>
+        @endif
       </div>
     </div>
   </div>
   <div class="max-w-[1400px] mx-auto px-5 md:px-8 mt-12 pt-6 border-t border-onyx/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-onyx/50">
-    <p>© {{ date('Y') }} Tigalapankaos. Seluruh hak cipta dilindungi.</p>
+    <p>© {{ date('Y') }} {{ $settings->site_name }}. Seluruh hak cipta dilindungi.</p>
     <p>Melayani Sulawesi, Kalimantan, dan Jawa.</p>
   </div>
 </footer>
 
-<a href="https://wa.me/6280000000000" target="_blank" rel="noopener" aria-label="Hubungi Tigalapankaos via WhatsApp"
+<a href="{{ $settings->whatsapp_link }}" target="_blank" rel="noopener" aria-label="Hubungi {{ $settings->site_name }} via WhatsApp"
    class="fixed bottom-5 right-5 md:bottom-7 md:right-7 z-50 w-14 h-14 rounded-full bg-gusto text-onyx flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform">
   <i class="ph-bold ph-whatsapp-logo text-2xl"></i>
 </a>

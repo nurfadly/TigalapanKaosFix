@@ -9,6 +9,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\TestimonialController;
@@ -92,6 +93,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resource('users', UserController::class)->except(['show']);
+
+    // CMS: Pengaturan situs (WA, email, sosmed) — dipakai di seluruh halaman publik.
+    Route::get('/settings', [SettingController::class, 'edit'])->name('settings.edit');
+    Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 });
 
 require __DIR__.'/auth.php';

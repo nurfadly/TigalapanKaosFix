@@ -87,7 +87,7 @@
           <h2 class="text-2xl md:text-3xl font-black max-w-[20ch]">Butuh Warna atau Ukuran Tertentu?</h2>
           <p class="mt-2 text-onyx/80 max-w-[48ch]">Admin kami siap bantu cek ketersediaan stok secara langsung.</p>
         </div>
-        <a href="https://wa.me/6280000000000" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-onyx text-cloud font-bold px-7 py-3.5 rounded-full hover:opacity-85 active:scale-[0.98] transition-all shrink-0">
+        <a href="{{ $settings->whatsapp_link }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-onyx text-cloud font-bold px-7 py-3.5 rounded-full hover:opacity-85 active:scale-[0.98] transition-all shrink-0">
           <i class="ph-bold ph-whatsapp-logo"></i> Hubungi Kami
         </a>
       </div>

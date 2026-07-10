@@ -53,20 +53,22 @@
 
       <!-- INFO -->
       <div class="lg:col-span-2 space-y-4">
-        <a href="https://wa.me/6280000000000" target="_blank" rel="noopener" class="flex items-center gap-4 bg-onyx text-cloud p-6 hover:opacity-90 transition-opacity">
+        <a href="{{ $settings->whatsapp_link }}" target="_blank" rel="noopener" class="flex items-center gap-4 bg-onyx text-cloud p-6 hover:opacity-90 transition-opacity">
           <i class="ph-bold ph-whatsapp-logo text-3xl text-gusto"></i>
           <div>
             <p class="font-bold">Chat Admin</p>
             <p class="text-sm text-cloud/70">Respons tercepat lewat WhatsApp</p>
           </div>
         </a>
-        <a href="mailto:halo@tigalapankaos.co.id" class="flex items-center gap-4 bg-white border border-onyx/10 p-6 hover:border-onyx transition-colors">
+        @if ($settings->contact_email)
+        <a href="mailto:{{ $settings->contact_email }}" class="flex items-center gap-4 bg-white border border-onyx/10 p-6 hover:border-onyx transition-colors">
           <i class="ph-bold ph-envelope-simple text-3xl text-gusto"></i>
           <div>
             <p class="font-bold">Email</p>
-            <p class="text-sm text-onyx/60">halo@tigalapankaos.co.id</p>
+            <p class="text-sm text-onyx/60">{{ $settings->contact_email }}</p>
           </div>
         </a>
+        @endif
         <div class="flex items-center gap-4 bg-white border border-onyx/10 p-6">
           <i class="ph-bold ph-clock text-3xl text-gusto"></i>
           <div>

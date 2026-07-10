@@ -1,7 +1,10 @@
 /* Tigalapankaos - Cart system (shared across pages via localStorage) */
 (function () {
   const STORE_KEY = 'tigalapankaos_cart';
-  const WA_NUMBER = '6280000000000';
+  // Dibaca dari <meta name="wa-number"> yang di-render dinamis oleh site-layout.blade.php
+  // (nilainya diatur admin lewat menu Pengaturan di CMS). Fallback kalau meta tidak ada.
+  const waMeta = document.querySelector('meta[name="wa-number"]');
+  const WA_NUMBER = waMeta ? waMeta.content : '6280000000000';
 
   function getCart() {
     try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; }
