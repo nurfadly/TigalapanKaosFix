@@ -56,7 +56,7 @@ Dari folder `laravel-cms` yang dikirim, salin/timpakan ke folder `tigalapankaos`
 
 | Dari (`laravel-cms/...`)            | Ke (`tigalapankaos/...`)             | Catatan |
 |---|---|---|
-| `app/Http/Controllers/*`            | `app/Http/Controllers/`              | Timpa/tambah semua (jangan hapus folder `Auth/` dan `ProfileController.php` bikinan Breeze) |
+| `app/Http/Controllers/*`            | `app/Http/Controllers/`              | Timpa/tambah semua (termasuk `Controller.php` dasar — jangan hapus folder `Auth/` dan `ProfileController.php` bikinan Breeze) |
 | `app/Models/*`                      | `app/Models/`                        | Timpa/tambah semua (termasuk `User.php`, memang disengaja menimpa) |
 | `app/Services/*`                    | `app/Services/`                      | Buat folder `Services` baru |
 | `app/Providers/AppServiceProvider.php` | `app/Providers/AppServiceProvider.php` | **Timpa** file bawaan Laravel |
@@ -152,4 +152,5 @@ Buka `/login` (contoh: `http://127.0.0.1:8000/login`), masuk dengan:
 | Error 419 "Page Expired" saat login/submit form | `APP_URL` di `.env` tidak sesuai dengan URL yang dipakai browser | Samakan `APP_URL` dengan alamat yang diketik di browser |
 | Gambar produk tidak muncul | Lupa jalankan `php artisan storage:link` | Jalankan perintahnya, lalu refresh |
 | `Class "Google\Analytics\..." not found` | Wajar — package GA4 memang belum diinstall (opsional) | Ikuti `GOOGLE-ANALYTICS-SETUP.md` kalau mau aktifkan, kalau tidak, abaikan (CMS tetap jalan normal) |
+| `Class "App\Http\Controllers\Controller" not found` | File dasar `app/Http/Controllers/Controller.php` hilang/tertimpa saat proses copy-paste folder `app` | File ini sudah disertakan di `laravel-cms/app/Http/Controllers/Controller.php` — pastikan ikut tersalin, lalu jalankan `composer dump-autoload` |
 | Composer lambat/gagal saat `create-project` | Koneksi internet/proxy | Coba ulang, atau pakai `composer create-project laravel/laravel tigalapankaos --prefer-dist` |
